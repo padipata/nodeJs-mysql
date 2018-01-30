@@ -1,41 +1,46 @@
 {
-  "name": "egg-example",
+  "name": "example",
   "version": "1.0.0",
-  "description": "This is egg example project",
+  "description": "",
   "private": true,
   "dependencies": {
-    "egg": "^1.4.0",
-    "egg-sequelize": "^3.0.1",
-    "pg": "^6.2.4",
-    "pg-hstore": "^2.3.2"
+    "egg": "^2.0.0",
+    "egg-mysql": "^3.0.0",
+    "egg-validate": "^1.0.0",
+    "egg-scripts": "^2.1.0"
   },
   "devDependencies": {
-    "egg-bin": "^3.4.2",
-    "egg-mock": "^3.7.2",
-    "lodash": "^4.17.4"
+    "autod": "^3.0.1",
+    "autod-egg": "^1.0.0",
+    "egg-bin": "^4.3.5",
+    "egg-ci": "^1.8.0",
+    "egg-mock": "^3.13.0",
+    "eslint": "^4.11.0",
+    "eslint-config-egg": "^5.1.0",
+    "webstorm-disable-index": "^1.2.0"
   },
   "engines": {
     "node": ">=8.9.0"
   },
   "scripts": {
+    "start": "egg-scripts start --daemon",
+    "stop": "egg-scripts stop",
     "dev": "egg-bin dev",
-    "test": "npm run test-local",
+    "debug": "egg-bin debug",
+    "test": "npm run lint -- --fix && npm run test-local",
     "test-local": "egg-bin test",
     "cov": "egg-bin cov",
     "lint": "eslint .",
     "ci": "npm run lint && npm run cov",
-    "autod": "autod",
-    "migrate:new": "egg-sequelize migration:create",
-    "migrate:up": "egg-sequelize db:migrate",
-    "migrate:down": "egg-sequelize db:migrate:undo"
+    "autod": "autod"
   },
   "ci": {
-    "version": "6"
+    "version": "8"
   },
   "repository": {
     "type": "git",
-    "url": "padipata/egg-example"
+    "url": ""
   },
-  "author": "padipata <18814002160@163.coom>",
+  "author": "",
   "license": "MIT"
 }

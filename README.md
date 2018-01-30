@@ -66,3 +66,13 @@ $ npm stop
 - 使用 `npm run lint` 来做代码风格检查。
 - 使用 `npm test` 来执行单元测试。
 - 使用 `npm run autod` 来自动检测依赖更新，详细参见 [autod](https://www.npmjs.com/package/autod)
+
+
+
+## 补充
+
+
+更新时间| 更新内容|更新说明
+---|---|---
+2018-01-28 | 添加egg-mysql| 需要创建一个名为egg的数据库，以及一个user表
+2018-01-30 | 添加egg-validate| 请求接口：http://127.0.0.1:7001/api/v2/topics

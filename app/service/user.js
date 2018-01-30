@@ -2,42 +2,23 @@
 
 const Service = require('egg').Service;
 
-class User extends Service {
-  async list({ offset = 0, limit = 10, order_by = 'created_at', order = 'ASC' }) {
-    return this.ctx.model.User.findAndCountAll({
-      offset,
-      limit,
-      order: [[ order_by, order.toUpperCase() ]],
-    });
-  }
+class UserService extends Service {
+    // 默认不需要提供构造函数。
+    // constructor(ctx) {
+    //     super(ctx); //如果需要在构造函数做一些处理，一定要有这句话，才能保证后面 `this.ctx`的使用。
+    //     // 就可以直接通过 this.ctx 获取 ctx 了
+    //     // 还可以直接通过 this.app 获取 app 了
+    // }
 
-  async find(id) {
-    const user = await this.ctx.model.User.findById(id);
-    if (!user) {
-      this.ctx.throw(404, 'user not found');
+    async find(uid) {
+        // 通过用户 id 从数据库获取用户详细信息
+        const user = await this.app.mysql.get('user', {uid: uid});
+
+        return {
+            name: user.user_name,
+            age: user.age,
+        };
     }
-    return user;
-  }
-
-  async create(user) {
-    return this.ctx.model.User.create(user);
-  }
-
-  async update({ id, updates }) {
-    const user = await this.ctx.model.User.findById(id);
-    if (!user) {
-      this.ctx.throw(404, 'user not found');
-    }
-    return user.update(updates);
-  }
-
-  async del(id) {
-    const user = await this.ctx.model.User.findById(id);
-    if (!user) {
-      this.ctx.throw(404, 'user not found');
-    }
-    return user.destroy();
-  }
 }
 
-module.exports = User;
+module.exports = UserService;

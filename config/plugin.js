@@ -1,9 +1,11 @@
 'use strict';
 
-// had enabled by egg
-// exports.static = true;
-
-exports.sequelize = {
+exports.mysql = {
     enable: true,
-    package: 'egg-sequelize',
+    package: 'egg-mysql',
+};
+
+exports.validate = {
+    enable: true,
+    package: 'egg-validate',
 };
