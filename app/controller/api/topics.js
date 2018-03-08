@@ -60,6 +60,8 @@ class TopicsController extends Controller {
         await ctx.service.topics.update(Object.assign({ id }, ctx.request.body));
         ctx.status = 204;
     }
+
+
 }
 
 module.exports = TopicsController;
