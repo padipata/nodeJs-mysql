@@ -10,16 +10,17 @@ class UserService extends Service {
         // 还可以直接通过 this.app 获取 app 了
     }
 
+    //通过uid查询数据库记录
     async find(uid) {
         // 通过用户 id 从数据库获取用户详细信息
         const user = await this.app.mysql.get('user', {uid: uid});
-
         return {
             name: user.user_name,
             age: user.age,
         };
     }
 
+    //插入联系人信息
     async insert(userName, userPhone, userMail, userNeed) {
         // 插入数据库
         const result = await this.app.mysql.insert('infomation', {
@@ -31,7 +32,6 @@ class UserService extends Service {
         console.log(result);
         // 判断插入成功 insertSuccess === 1
         const insertSuccess = result.affectedRows;
-
         return insertSuccess
     }
 }
