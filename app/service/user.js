@@ -30,7 +30,8 @@ class UserService extends Service {
         });
         console.log(result);
         // 判断插入成功
-        const insertSuccess = result.affectedRows === 1;
+        const insertSuccess = result.affectedRows
+        return insertSuccess
     }
 }
 

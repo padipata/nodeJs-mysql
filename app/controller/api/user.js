@@ -8,7 +8,7 @@ class UserController extends Controller {
         const user = await this.ctx.service.user.find(uid);
         this.ctx.status = 200;
         let info = {};
-        info.code = 200;
+        info.status = 200;
         info.message = "查询成功";
         info.data = user;
         this.ctx.body = info;
@@ -26,8 +26,21 @@ class UserController extends Controller {
             return;
         }
         const user = await this.ctx.service.user.insert(userName, userPhone, userMail, userNeed);
-        this.ctx.body = user;
-        this.ctx.status = 200;
+        //插入成功
+        if(user === 1){
+            let info = {};
+            info.status = 200;
+            info.message = "插入数据成功";
+            info.data = "";
+            this.ctx.body = info;
+            this.ctx.status = 200;
+        }else {
+            let info = {};
+            info.status = 400;
+            info.message = "插入数据失败";
+            info.data = "";
+            this.ctx.body = info;
+        }
     }
 }
 

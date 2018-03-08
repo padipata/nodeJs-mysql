@@ -6,8 +6,8 @@ module.exports = appInfo => {
     // use for cookie sign key, should change to your own and keep security
     config.keys = appInfo.name + '_1516418387158_7965';
 
-    // add your config here
-    config.middleware = [];
+    // 使用koa的中间件
+    config.middleware = ['errorHandler'];
 
     //关闭安全威胁csrf的防范
     config.security = {
