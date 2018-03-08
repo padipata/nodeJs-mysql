@@ -29,8 +29,9 @@ class UserService extends Service {
             userNeed: userNeed
         });
         console.log(result);
-        // 判断插入成功
-        const insertSuccess = result.affectedRows
+        // 判断插入成功 insertSuccess === 1
+        const insertSuccess = result.affectedRows;
+
         return insertSuccess
     }
 }
