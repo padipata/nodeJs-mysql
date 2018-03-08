@@ -4,10 +4,14 @@ const Controller = require('egg').Controller;
 
 class UserController extends Controller {
     async info() {
-        const ctx = this.ctx;
-        const userId = ctx.params.id;
-        const user = await ctx.service.user.find(userId);
-        ctx.body = user;
+        const uid = this.ctx.request.body.uid;
+        const user = await this.ctx.service.user.find(uid);
+        this.ctx.status = 200;
+        let info = {};
+        info.code = 200;
+        info.message = "查询成功";
+        info.data = user;
+        this.ctx.body = info;
     }
 
     //插入

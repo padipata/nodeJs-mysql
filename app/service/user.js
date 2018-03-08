@@ -32,7 +32,6 @@ class UserService extends Service {
         // 判断插入成功
         const insertSuccess = result.affectedRows === 1;
     }
-
 }
 
 module.exports = UserService;
