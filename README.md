@@ -75,4 +75,9 @@ $ npm stop
 更新时间| 更新内容|更新说明
 ---|---|---
 2018-01-28 | 添加egg-mysql| 需要创建一个名为egg的数据库，以及一个user表
-2018-01-30 | 添加egg-validate| 请求接口：http://127.0.0.1:7001/api/v2/topics
+2018-01-30 | 添加egg-validate| 用户登录校验
+2018-03-08 | 添加egg-mysql| v3.0.0
+2018-03-08 | 配置csrf安全防范|
+2018-03-08 | 添加egg-cors| 解决浏览器跨域
+2018-03-08 | 添加GET请求| 请求接口：http://127.0.0.1:7001/api/user/:id
+2018-03-08 | 添加POST请求| 请求接口：http://127.0.0.1:7001/api/insert（必填字段：userName, userPhone 选填：userMail, userNeed）
