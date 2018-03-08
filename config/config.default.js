@@ -9,5 +9,18 @@ module.exports = appInfo => {
     // add your config here
     config.middleware = [];
 
+    //关闭安全威胁csrf的防范
+    config.security = {
+        csrf: {
+            enable: false,
+        },
+    };
+
+    //解决跨域
+    config.cors = {
+        origin: '*',
+        allowMethods: 'GET,HEAD,PUT,POST,DELETE,PATCH',
+    };
+
     return config;
 };
