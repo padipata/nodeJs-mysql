@@ -82,4 +82,8 @@ $ npm stop
 2018-03-08 | 添加egg-cors| 解决浏览器跨域
 2018-03-08 | 添加POST请求| 请求接口：http://127.0.0.1:7001/api/user
 2018-03-08 | 添加POST请求| 请求接口：http://127.0.0.1:7001/api/insert
-2018-03-09 | 添加Token校验 | 请求字段 authorization : Token
+2018-03-09 | 添加jsonwebtoken | 在 config.default.js 中配置 jwtSecret
+2018-03-09 | 生成 token | jwt.sign({uid: user.uid}, app.config.jwtSecret, {expiresIn: '7d'});
+2018-03-09 | 将token写入头信息 | this.ctx.set('authorization', 'Bearer ' + token);
+2018-03-09 | 添加中间件 auth.js | 校验用户 token 信息
+2018-03-09 | 路由添加用户校验 | app.post('/api/user', auth.isLogin, 'api.user.info');

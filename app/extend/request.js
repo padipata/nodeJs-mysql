@@ -1,5 +1,6 @@
 'use strict';
 const jwt = require('jsonwebtoken');
+
 module.exports = {
     get user() {
         const token = this.get('authorization');
