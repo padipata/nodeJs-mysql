@@ -22,13 +22,17 @@ module.exports = app => {
             //添加token到头信息
             this.ctx.set('authorization', 'Bearer ' + token);
 
-            //哈希MD5加密
-            user.user_name = crypto.createHash('md5').update(user.user_name).digest('hex');
+            //MD5加密(会存在碰撞)
+            const test = crypto.createHash('md5').update(user.user_name).digest('hex');
+            //sha1加密
+            const test2 = crypto.createHash('sha1').update(user.user_name).digest('hex');
 
             return {
                 token: token,
                 name: user.user_name,
                 age: user.age,
+                test: test,
+                test2: test2
             };
         }
 
