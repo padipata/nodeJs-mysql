@@ -87,3 +87,4 @@ $ npm stop
 2018-03-09 | 将token写入头信息 | this.ctx.set('authorization', 'Bearer ' + token);
 2018-03-09 | 添加中间件 auth.js | 校验用户 token 信息
 2018-03-09 | 路由添加用户校验 | app.post('/api/user', auth.isLogin, 'api.user.info');
+2018-03-09 | 添加crypto加密 | crypto.createHash('md5').update(user.user_name).digest('hex');

@@ -2,6 +2,7 @@
 
 const Service = require('egg').Service;
 const jwt = require('jsonwebtoken');
+const crypto = require('crypto');
 
 module.exports = app => {
     class UserService extends app.Service {
@@ -16,8 +17,14 @@ module.exports = app => {
         async find(uid) {
             // 通过用户 id 从数据库获取用户详细信息
             const user = await this.app.mysql.get('user', {uid: uid});
+            //生成token
             const token = jwt.sign({uid: user.uid}, app.config.jwtSecret, {expiresIn: '7d'});
+            //添加token到头信息
             this.ctx.set('authorization', 'Bearer ' + token);
+
+            //哈希MD5加密
+            user.user_name = crypto.createHash('md5').update(user.user_name).digest('hex');
+
             return {
                 token: token,
                 name: user.user_name,
