@@ -9,6 +9,8 @@ module.exports = app => {
     const {router, controller} = app;
 
     router.get('/', controller.home.index);
-    router.post('/api/user', 'api.user.info');
+    // router.post('/api/user', 'api.user.info');
     router.post('/api/insert', 'api.user.insert')
+    //需要检验token
+    router.post('/api/user', auth.isLogin, 'api.user.info');
 };
