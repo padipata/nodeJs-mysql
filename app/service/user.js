@@ -28,12 +28,13 @@ module.exports = app => {
                 const user = await this.app.mysql.select('user', {
                     // where: { uid: uid }, //筛选条件
                     orders: [['uid', 'acs']], //asc 正序 | desc 倒序
-                    limit: 10, //10条数据
+                    limit: 10, //限制10条数据
                     offset: 0 //从第0个数据开始读取
                 });
                 if (user) {
                     return user;
                 }
+
                 throw new Error('用户不存在');
             }
         }
