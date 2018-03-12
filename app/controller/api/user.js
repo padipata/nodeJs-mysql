@@ -3,19 +3,27 @@
 const Controller = require('egg').Controller;
 
 class UserController extends Controller {
-    //通过uid查询数据库记录
+    // 通过uid查询数据库记录
     async info() {
         const uid = this.ctx.request.body.uid;
         const user = await this.ctx.service.user.find(uid);
-        this.ctx.status = 200;
         let info = {};
-        info.status = 200;
-        info.message = "查询成功";
-        info.data = user;
+        //判断数据库内容是否存在
+        if (user.user) {
+            this.ctx.status = 200;
+            info.status = 200;
+            info.message = '查询成功';
+            info.data = user;
+        } else {
+            this.ctx.status = 400;
+            info.status = 400;
+            info.message = '用户不存在';
+            info.data = user;
+        }
         this.ctx.body = info;
     }
 
-    //插入联系人信息
+    // 插入联系人信息
     async insert() {
         const userName = this.ctx.request.body.userName;
         const userPhone = this.ctx.request.body.userPhone;
@@ -27,19 +35,19 @@ class UserController extends Controller {
             return;
         }
         const user = await this.ctx.service.user.insert(userName, userPhone, userMail, userNeed);
-        //插入成功
-        if(user === 1){
-            let info = {};
+        // 插入成功
+        if (user === 1) {
+            const info = {};
             info.status = 200;
-            info.message = "插入数据成功";
-            info.data = "";
+            info.message = '插入数据成功';
+            info.data = '';
             this.ctx.body = info;
             this.ctx.status = 200;
-        }else {
-            let info = {};
+        } else {
+            const info = {};
             info.status = 400;
-            info.message = "插入数据失败";
-            info.data = "";
+            info.message = '插入数据失败';
+            info.data = '';
             this.ctx.body = info;
         }
     }
