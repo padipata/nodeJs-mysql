@@ -9,7 +9,6 @@ module.exports = app => {
 
         // 通过uid查询数据库记录
         async find(uid) {
-
             // // 生成token
             // const token = jwt.sign({uid: user.uid}, app.config.jwtSecret, {expiresIn: '7d'});
             // // 添加token到头信息
@@ -17,22 +16,26 @@ module.exports = app => {
             // MD5加密(存在碰撞)
             // const test = crypto.createHash('md5').update(user.user_name).digest('hex');
 
-            let user = [];
             if (uid) {
                 // 通过用户 id 从数据库获取用户详细信息
-                user = await this.app.mysql.get('user', {uid});
+                const user = await this.app.mysql.get('user', {uid});
+                if (user) {
+                    return user;
+                }
+                throw new Error('用户不存在'); //抛出异常
+
             } else {
-                user = await this.app.mysql.select('user', {
+                const user = await this.app.mysql.select('user', {
                     // where: { uid: uid }, //筛选条件
                     orders: [['uid', 'acs']], //asc 正序 | desc 倒序
                     limit: 10, //10条数据
                     offset: 0 //从第0个数据开始读取
                 });
+                if (user) {
+                    return user;
+                }
+                throw new Error('用户不存在');
             }
-
-            return {
-                user
-            };
         }
 
         // 插入联系人信息
