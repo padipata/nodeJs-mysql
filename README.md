@@ -21,6 +21,7 @@
 2018-03-09 | 路由添加用户校验 | app.post('/api/user', auth.isLogin, 'api.user.info');
 2018-03-14 | 添加egg-swagger | api 管理文档 (缺少配置)
 2018-03-14 | 添加后台管理系统 |
+2018-03-15 | 完善egg-swagger配置 | 请求接口：http://127.0.0.1:7001/docs
 
 ### 本地开发
 
