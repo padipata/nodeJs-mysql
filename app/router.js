@@ -15,7 +15,7 @@ module.exports = app => {
     router.post('/api/user', auth.isLogin, 'api.user.info');
 
 
-    router.get('/swagger.json', function* () {
-        this.body = router.swagger;
+    app.get('/swagger.json', function* () {
+        this.body = app.swagger;
     });
 };
