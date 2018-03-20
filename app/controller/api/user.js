@@ -24,7 +24,7 @@ class UserController extends Controller {
     if (!userName || !userPhone) {
       this.ctx.status = 400;
       this.ctx.body = '姓名或者电话不能为空';
-      return; 
+      return;
     }
     const user = await this.ctx.service.user.insert(userName, userPhone, userMail, userNeed);
     // 插入成功

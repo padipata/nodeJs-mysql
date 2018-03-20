@@ -6,6 +6,7 @@
   "dependencies": {
     "crypto": "^1.0.1",
     "egg": "^2.0.0",
+    "egg-connector-remote": "^1.0.6",
     "egg-cors": "^2.0.0",
     "egg-mysql": "^3.0.0",
     "egg-scripts": "^2.5.1",

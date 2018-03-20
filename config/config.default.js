@@ -13,7 +13,7 @@ module.exports = appInfo => {
     config.jwtSecret = 'pengjunhao';
 
     // 使用koa的中间件
-    config.middleware = ['errorHandler', 'swagger'];
+    config.middleware = ['errorHandler'];
 
     config.auth = {
         test: 'tst',
@@ -40,7 +40,7 @@ module.exports = appInfo => {
     config.swagger = {
         enable: true,
         mountPath: '/docs',
-        swaggerFilePath: '/swagger.json',
+        swaggerFilePath: './public/swagger',
     };
 
     return config;
