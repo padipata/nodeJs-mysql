@@ -14,9 +14,10 @@ module.exports = app => {
     // 需要检验token
     router.post('/api/user', auth.isLogin, 'api.user.info');
 
-    //swagger-ui
-    router.get('/docs', function* () {
-        this.body = app.static('./public/swagger');
+
+    app.get('/swagger.json', function* () {
+        this.body = app.swagger;
     });
 
+    // router.use('/static', app.static('public/swagger'));
 };
