@@ -10,11 +10,13 @@ module.exports = app => {
         // 通过uid查询数据库记录
         async find(uid) {
             // // 生成token
-            // const token = jwt.sign({uid: user.uid}, app.config.jwtSecret, {expiresIn: '7d'});
-            // // 添加token到头信息
-            // this.ctx.set('authorization', 'Bearer ' + token);
+            const token = jwt.sign({uid: user.uid}, app.config.jwtSecret, {expiresIn: '7d'});
+
+            // 添加token到头信息
+            this.ctx.set('authorization', 'Bearer ' + token);
+
             // MD5加密(存在碰撞)
-            // const test = crypto.createHash('md5').update(user.user_name).digest('hex');
+            const test = crypto.createHash('md5').update(user.user_name).digest('hex');
 
             if (uid) {
                 // 通过用户 id 从数据库获取用户详细信息
