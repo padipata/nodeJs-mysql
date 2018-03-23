@@ -2,7 +2,7 @@
 
 const jwt = require('jsonwebtoken');
 
-describe('test/app/controller/api/user.test.js', () => {
+describe('test/app/controller/user.test.js', () => {
     describe('用户注册', () => {
         it('密码为空', () => {
             return request(app.callback())
