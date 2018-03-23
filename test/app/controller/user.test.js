@@ -1,5 +1,7 @@
 'use strict';
+
 const jwt = require('jsonwebtoken');
+
 describe('test/app/controller/api/user.test.js', () => {
     describe('用户注册', () => {
         it('密码为空', () => {
