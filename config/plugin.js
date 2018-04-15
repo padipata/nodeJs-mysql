@@ -16,9 +16,3 @@ exports.cors = {
     enable: true,
     package: 'egg-cors',
 };
-
-//api管理文档
-exports.swagger = {
-    enable: true,
-    package: 'egg-swagger',
-};

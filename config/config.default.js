@@ -36,12 +36,5 @@ module.exports = appInfo => {
         allowMethods: 'GET,HEAD,PUT,POST,DELETE,PATCH',
     };
 
-    // swagger配置项
-    config.swagger = {
-        enable: true,
-        mountPath: '/docs',
-        swaggerFilePath: './public/swagger',
-    };
-
     return config;
 };
