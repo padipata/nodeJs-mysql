@@ -6,8 +6,10 @@ class UserController extends Controller {
     /* 筛选商品 */
     async good() {
         const {ctx} = this;
-        const plant_title = ctx.request.body.plant_title;
+        const {plant_title} = ctx.request.body;
+
         const plant = await ctx.service.goods.good(plant_title);
+
         if (!plant.length) {
             ctx.status = 404;
             return;
@@ -32,6 +34,7 @@ class UserController extends Controller {
         });
 
         const plant = await ctx.service.goods.sreach(plant_name);
+
         if (!plant.length) {
             ctx.status = 404;
             return;

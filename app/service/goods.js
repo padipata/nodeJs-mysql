@@ -14,10 +14,7 @@ module.exports = app => {
                 where: {plant_title: [plant_title]}, // WHERE 条件
                 orders: [['pid', 'desc']], // 排序方式
             });
-            if (plant) {
-                return plant;
-            }
-            throw new Error('商品不存在'); //抛出异常
+            return plant;
         }
 
         /**
@@ -26,11 +23,8 @@ module.exports = app => {
          * @return {Promise.<*>}
          */
         async sreach(plant_name) {
-            const plant = await this.app.mysql.query("SELECT * FROM plant WHERE plant_name LIKE '%"+plant_name+"%'");
-            if (plant) {
-                return plant;
-            }
-            throw new Error('商品不存在'); //抛出异常
+            const plant = await this.app.mysql.query("SELECT * FROM plant WHERE plant_name LIKE '%" + plant_name + "%'");
+            return plant;
         }
     }
 
