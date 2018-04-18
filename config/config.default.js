@@ -13,7 +13,7 @@ module.exports = appInfo => {
     config.jwtSecret = 'pengjunhao';
 
     // 使用koa的中间件
-    config.middleware = ['errorHandler'];
+    config.middleware = ['errorHandler', 'notfoundHandler'];
 
     config.auth = {
         test: 'tst',
