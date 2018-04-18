@@ -23,7 +23,8 @@ module.exports = app => {
          * @return {Promise.<*>}
          */
         async sreach(plant_name) {
-            const plant = await this.app.mysql.query("SELECT * FROM plant WHERE plant_name LIKE '%" + plant_name + "%'");
+            const sql = "SELECT * FROM plant WHERE plant_name LIKE '%"+plant_name+"%'";
+            const plant = await this.app.mysql.query(sql);
             return plant;
         }
     }

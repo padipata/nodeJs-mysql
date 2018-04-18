@@ -27,7 +27,7 @@ class UserController extends Controller {
          校验参数规则，不通过或者为空时抛出 422
          格式：ctx.validate(rule, [body])
          如果不传第二个参数会自动校验 `ctx.request.body`
-         allowEmpty 默认为false，不可以输入为空
+         allowEmpty 默认为false(不能为空)
          */
         ctx.validate({
             plant_name: {type: 'string', required: true, allowEmpty: true},
